@@ -2,4 +2,4 @@
 
 React Native Mobile Application run through Expo
 
-JavaScript, React Native
+JavaScript, MongoDB, ExpressJS, React Native JS
