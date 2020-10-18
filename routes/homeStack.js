@@ -1,18 +1,51 @@
+import React from "react";
+import {createAppContainer,
+        createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
 import HomeScreen from '../screens/home';
 import LoginScreen from '../screens/login';
+import RegisterScreen from '../screens/register';
+import Initializing from '../screens/initializing';
+import {Linking} from "expo";
 
 // Object of Screens Avaliable
-const screens = {
+const screens = createStackNavigator({
     HomeScreen: {
-        screen: HomeScreen
+        screen: HomeScreen,
+        navigationOptions: {
+            headerTitle: "Home"
+        },
+        path: ''
     },
     LoginScreen: {
-        screen: LoginScreen
+        screen: LoginScreen,
+        navigationOptions: {
+            headerTitle: "Login"
+        },
+        path: 'login'
+    },
+    RegisterScreen: {
+        screen: RegisterScreen,
+        navigationOptions: {
+            headerTitle: "Register"
+        },
+        path: 'register'
     }
+});
+
+const App = createSwitchNavigator({
+    Initializing,
+    screens: {
+        screen: screens,
+        path: ""
+    }
+});
+
+
+const AppContainer = createAppContainer(App);
+
+export default () => {
+    const prefix = Linking.makeUrl("/");
+    console.log(prefix);
+    return <AppContainer uriPrefix={prefix} />;
 }
-
-const HomeStack = createStackNavigator(screens);
-
-export default createAppContainer(HomeStack);

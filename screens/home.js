@@ -16,6 +16,11 @@ export default class Home extends Component {
                         btnBgColor='transparent'
                         textColor='white'
                         btnPress={() => navigate('LoginScreen')}/>
+                    <AppButton
+                        btnTitle='Register'
+                        btnBgColor='transparent'
+                        textColor='white'
+                        btnPress={() => navigate('RegisterScreen')}/>
                 </View>
                 <Text style={styles.sub2title}>Carbone App 2020</Text>
             </SafeAreaView>
@@ -25,7 +30,6 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        
         flex: 1,
         backgroundColor: '#575fcf',
         alignItems: 'center',
@@ -33,6 +37,7 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: Dimensions.get('window').height/4.5,
+        marginBottom: 250,
         color: 'white',
         fontSize: 35,
         fontWeight: 'bold'

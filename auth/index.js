@@ -4,13 +4,18 @@ const cors = require('cors');
 require("dotenv").config();
 
 //Express Setup
-const app = express();
-app.use(express.json());
-app.use(cors());
+const webApp = express();
+const mobileApp = express();
+webApp.use(express.json());
+webApp.use(cors());
+mobileApp.use(express.json());
+mobileApp.use(cors());
 
-const PORT = process.env.PORT || 5000;
+const webPORT = process.env.PORT || 5000;
+const mobilePORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => console.log(`App listening on port: ${PORT}`));
+webApp.listen(webPORT, () => console.log(`Web App listening on port: ${webPORT}`));
+mobileApp.listen(mobilePORT, () => console.log(`Mobile App listening on port: ${mobilePORT}`));
 
 //Mongoose Setup
 mongoose.connect(
@@ -27,4 +32,5 @@ mongoose.connect(
 );
 
 //Routes Setup
-app.use("/users", require("./routes/userRouter"))
+webApp.use("/users", require("./routes/userRouter"));
+mobileApp.use("/users", require("./routes/userRouter"));

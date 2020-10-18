@@ -11,12 +11,12 @@ export const AppButton = ({btnTitle, btnBgColor, textColor, btnPress})=>(
                     borderColor: 'white',
                     height:40, 
                     width: Dimensions.get('window').width/2,
-                    marginTop: 250,
+                    marginBottom: 10,
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }} 
         onPress={btnPress}>
-        <Text style={{  color:textColor}}>
+        <Text style={{  color:textColor, fontWeight: 'bold'}}>
             {btnTitle}
         </Text>
     </TouchableOpacity>
