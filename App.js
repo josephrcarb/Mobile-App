@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import Navigator from './routes/homeStack';
 import UserContext from "./context/UserContext";
+import Header from './screens/header';
 import Axios from "axios";
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
 
   return(
     <UserContext.Provider value={{userData, setUserData}}>
+      <Header />
       <Navigator />
     </UserContext.Provider>
   );

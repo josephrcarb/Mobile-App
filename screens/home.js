@@ -13,8 +13,8 @@ export default class Home extends Component {
                 <View>
                     <AppButton
                         btnTitle='Login'
-                        btnBgColor='transparent'
-                        textColor='white'
+                        btnBgColor='#7bed9f'
+                        textColor='#5352ed'
                         btnPress={() => navigate('LoginScreen')}/>
                     <AppButton
                         btnTitle='Register'

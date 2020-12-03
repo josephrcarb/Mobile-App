@@ -119,9 +119,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 100
     },
-    goLogin:{
-        marginTop: 100
-    },
     inputText: {
         fontWeight: 'bold',
         backgroundColor: "transparent",

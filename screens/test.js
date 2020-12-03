@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 export default class Test extends Component {
-    static navigationOptions = { header: null }
+    //static navigationOptions = { header: null }
     render(){
         return (
             <SafeAreaView style={styles.container}>
-                <Text style={styles.title}>At the test Screen</Text>
+                <Text style={styles.title}>eBAmazon</Text>
+                
+
             </SafeAreaView>
         );
     }
