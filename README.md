@@ -1,6 +1,6 @@
 # eCommerce Mobile and Web Application
 
-eBay and Amazon Hybrid (eBamazon)
+eBay and Amazon Hybrid (eBAmazon)
 
 ## Disclaimer
 
