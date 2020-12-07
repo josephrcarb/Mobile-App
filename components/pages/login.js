@@ -1,14 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { TouchableOpacity, StyleSheet, TextInput, Text, View, SafeAreaView, Dimensions } from 'react-native';
-import { AppButton } from "../components/Button";
-import UserContext from "../context/UserContext";
+import { AppButton } from "../misc/Button";
+import UserContext from "../../context/UserContext";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
-export default function Login ( {navigation} ){
+export default function Login (){
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const { setUserData } = useContext(UserContext);
+    const history = useHistory();
+
+    const bwidth = Dimensions.get('window').width/2;
 
     const submitForm = async () => {
         const tryUser = { email, password };
@@ -19,7 +23,7 @@ export default function Login ( {navigation} ){
                 user: response.data.user,
             });
             localStorage.setItem("auth-token", response.data.token);
-            navigation.navigate('TestScreen');
+            history.push('/profile')
         } catch (error){
            alert(error.response.data.msg);
         }
@@ -58,7 +62,8 @@ export default function Login ( {navigation} ){
                 btnTitle='back to Home Screen'
                 btnBgColor='transparent'
                 textColor='white'
-                btnPress={() => navigation.navigate('HomeScreen')}/>
+                btnPress={() => (history.push('/'))}
+                btnWidth={bwidth}/>
             <Text style={styles.sub2title}>Carbone App 2020</Text>
         </SafeAreaView>
     );

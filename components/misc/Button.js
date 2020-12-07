@@ -1,8 +1,8 @@
-
 import React from 'react';
-import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { Text,TouchableOpacity, Dimensions } from 'react-native';
 
-export const AppButton = ({btnTitle, btnBgColor, textColor, btnPress})=>(
+
+export const AppButton = ({btnTitle, btnBgColor, textColor, btnPress, btnWidth})=>(
     <TouchableOpacity style={
                 {
                     backgroundColor: btnBgColor, 
@@ -10,7 +10,7 @@ export const AppButton = ({btnTitle, btnBgColor, textColor, btnPress})=>(
                     borderWidth: 2,
                     borderColor: 'white',
                     height:40, 
-                    width: Dimensions.get('window').width/2,
+                    width: btnWidth,
                     marginBottom: 10,
                     alignItems: 'center',
                     justifyContent: 'center',

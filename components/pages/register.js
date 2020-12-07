@@ -1,17 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { TouchableOpacity, StyleSheet, TextInput, Text, View, SafeAreaView, Dimensions } from 'react-native';
-import { AppButton } from "../components/Button";
-import UserContext from "../context/UserContext";
+import { AppButton } from "../misc/Button";
+import UserContext from "../../context/UserContext";
 import Axios from "axios";
-import {Alert} from 'react-alert';
+import { useHistory } from "react-router-dom";
 
-export default function Register ( {navigation} ) {  
+export default function Register () {  
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordCheck, setPasswordCheck] = useState();
     const [displayName, setDisplayName] = useState();
 
     const { setUserData } = useContext(UserContext);
+    const history = useHistory();
+    
+    const bwidth = Dimensions.get('window').width/2;
+
 
     const submitForm = async () => {
         const newUser = { email, password, passwordCheck, displayName };
@@ -26,7 +30,7 @@ export default function Register ( {navigation} ) {
             user: loginRes.data.user,
         });
         localStorage.setItem("auth-token", loginRes.data.token);
-        navigation.navigate('TestScreen');
+        history.push('/test');
     };
 
     return (
@@ -77,7 +81,8 @@ export default function Register ( {navigation} ) {
                 btnTitle='back to Login Screen'
                 btnBgColor='transparent'
                 textColor='white'
-                btnPress={() => navigation.navigate('LoginScreen')}/>
+                btnPress={() => history.push('/login')}
+                btnWidth={bwidth}/>
             
             <Text style={styles.sub2title}>Carbone App 2020</Text>
         </SafeAreaView>

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
-export default class Test extends Component {
-    //static navigationOptions = { header: null }
-    render(){
-        return (
-            <SafeAreaView style={styles.container}>
-                <Text style={styles.title}>eBAmazon</Text>
-                
+export default function Test ( {navigation} ) {
 
-            </SafeAreaView>
-        );
-    }
+    return (
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.title}>eBAmazon</Text>
+            
+
+        </SafeAreaView>
+    );
+
 }
 
 const styles = StyleSheet.create({
