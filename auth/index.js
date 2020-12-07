@@ -5,17 +5,12 @@ require("dotenv").config();
 
 //Express Setup
 const webApp = express();
-const mobileApp = express();
 webApp.use(express.json());
 webApp.use(cors());
-mobileApp.use(express.json());
-mobileApp.use(cors());
 
 const webPORT = process.env.PORT || 5000;
-const mobilePORT = process.env.PORT || 5001;
 
 webApp.listen(webPORT, () => console.log(`Web App listening on port: ${webPORT}`));
-mobileApp.listen(mobilePORT, () => console.log(`Mobile App listening on port: ${mobilePORT}`));
 
 //Mongoose Setup
 mongoose.connect(
@@ -33,4 +28,4 @@ mongoose.connect(
 
 //Routes Setup
 webApp.use("/users", require("./routes/userRouter"));
-mobileApp.use("/users", require("./routes/userRouter"));
+webApp.use("/items", require("./routes/itemRouter"));

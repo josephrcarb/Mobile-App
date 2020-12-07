@@ -96,6 +96,7 @@ router.post("/login", async(req, res) => {
     }
 });
 
+//Delete Account Request
 router.delete("/delete", auth, async (req, res) => {
     try{
         const deletedUser = await User.findByIdAndDelete(req.user);
@@ -105,6 +106,7 @@ router.delete("/delete", auth, async (req, res) => {
     }
 });
 
+//Verify Token Request
 router.post("/tokenIsValid", async( req, res) => {
     try {
         const token = req.header("x-auth-token");
@@ -127,6 +129,7 @@ router.post("/tokenIsValid", async( req, res) => {
     }
 });
 
+//Get User Data Request
 router.get("/", auth, async (req, res) => {
     const user = await User.findById(req.user);
     res.json({
