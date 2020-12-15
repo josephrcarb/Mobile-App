@@ -75,5 +75,21 @@ router.post("/buy", async (req, res) => {
     }
 });
 
+//Get Database of listed items
+router.get("/",  async (req, res) => {
+    const items = await Item.find({listed: true});
+    if(!items){
+        return res
+                .status(400)
+                .json({msg:"No items found."});
+    }
+    const itemMap = {};
+    items.forEach((item) => {
+        itemMap[item._id] = item;
+    });
+    res.json({
+        items: itemMap,
+    });
+});
 
 module.exports = router;

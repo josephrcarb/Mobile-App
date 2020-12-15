@@ -1,17 +1,15 @@
 import React from 'react';
-import { Text, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
-
-export const AppButton = ({btnTitle, btnBgColor, textColor, btnPress, btnWidth})=>(
+export const CardButton = ({btnTitle, btnBgColor, textColor, btnPress, btnWidth})=>(
     <TouchableOpacity style={
                 {
                     backgroundColor: btnBgColor, 
                     borderRadius:10,
                     borderWidth: 2,
-                    borderColor: 'white',
-                    height:40, 
+                    borderColor: 'black',
+                    height: 40, 
                     width: btnWidth,
-                    marginBottom: 10,
                     alignItems: 'center',
                     justifyContent: 'center',
                 }} 

@@ -1,18 +1,36 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Card} from 'react';
 import { TouchableOpacity, StyleSheet, TextInput, Text, View, SafeAreaView, Dimensions } from 'react-native';
 import { AppButton } from "../misc/Button";
 import UserContext from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
+import { ItemCard } from "../misc/ItemCard";
+
+
 
 export default function List (){
     const history = useHistory();
     const bwidth = Dimensions.get('window').width/2;
-
+    const [items, setItems] = useState(null);
+    const getItems = async () => {
+        const items = await Axios.get("http://localhost:5000/items/");
+        setItems(items.data.items);
+    }
+    getItems();
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>eBAmazon</Text>
-            
+            <View className="items" style={styles.items}>
+            {items &&
+                    Object.values(items).map((item, index) => {
+                        return (
+                            <div className="item" key={index}>
+                                <ItemCard
+                                    cardId={item.id}
+                                    sellPrice={item.sellPrice}/>
+                            </div>
+                    );
+                })}
+            </View>
             <View>
                 
                 <AppButton
@@ -29,13 +47,12 @@ export default function List (){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#575fcf',
+        backgroundColor: '#4297A0',
         alignItems: 'center',
 
     },
     title: {
         marginTop: Dimensions.get('window').height/4.5,
-        marginBottom: 250,
         color: 'white',
         fontSize: 35,
         fontWeight: 'bold'
@@ -49,6 +66,14 @@ const styles = StyleSheet.create({
         fontWeight: '200',
         position: 'absolute',
         bottom: 100
-    }
+    },
+    items: {
+        justifyContent: 'center',
+        marginTop: 50,
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: Dimensions.get('window').width/1.5
+    },
   });
   
