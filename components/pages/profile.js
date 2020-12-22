@@ -30,7 +30,7 @@ export default function Profile (){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#575fcf',
+        backgroundColor: '#4297A0',
         alignItems: 'center',
 
     },

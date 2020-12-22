@@ -5,7 +5,11 @@ const {v4: uuidv4}= require("uuid");
 //List Item Post Request
 router.post("/list", async (req, res) => {
     try {
-        let { boughtPrice, seller } = req.body;
+        let boughtPrice = req.body.price;
+        let seller = req.body.userId;
+        let name = req.body.name;
+        let condition = req.body.condition;
+        let file = req.body.file;
         
         //Validation
         if( !seller )
@@ -16,6 +20,15 @@ router.post("/list", async (req, res) => {
             return res
                 .status(400)
                 .json({msg: "Purchased price not recieved."});
+        if( !name || !condition)
+            return res
+                .status(400)
+                .json({msg: "Not all fields have been entere."});
+        if( name.length > 20 || condition.length > 20 )
+            return res
+                .status(400)
+                .json({msg: "Condition or Name is too long."});
+
 
         const itemId = uuidv4();
         const existingItem = await Item.findOne({id:itemId});
@@ -29,6 +42,8 @@ router.post("/list", async (req, res) => {
 
         const newItem = new Item({
             id: itemId,
+            name,
+            condition,
             listed: true,
             boughtPrice,
             sellPrice: newPrice,
@@ -46,8 +61,9 @@ router.post("/list", async (req, res) => {
 //Buy item Post Request
 router.post("/buy", async (req, res) => {
     try {
-        let { id, buyer } = req.body;
-        if ( !buyer )
+        let id = req.body.productId;
+        let buyerId = req.body.userId;
+        if ( !buyerId )
             return res
                 .status(400)
                 .json({msg: "Error no logged in user, when making request."});
@@ -67,7 +83,7 @@ router.post("/buy", async (req, res) => {
                 .status(400)
                 .json({msg:"Can not sell a non-listed item."});
 
-        let savedItem = await Item.findOneAndUpdate({id:id}, {listed: false, buyer: buyer});
+        let savedItem = await Item.findOneAndUpdate({id:id}, {listed: false, buyer: buyerId});
         res.json(savedItem);
 
     }   catch(err) {

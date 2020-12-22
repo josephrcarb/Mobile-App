@@ -1,19 +1,38 @@
 import React from 'react';
 import {Text, View, StyleSheet, Dimensions, Font} from 'react-native';
 import {CardButton} from './CardButton';
+import Axios from 'axios';
+
 var cardWidth = Dimensions.get('window').width / 8;
-export const ItemCard = ({cardId, sellPrice}) => (
+
+const buyItems = async ( productId, userData ) => {
+    var userId = null;
+    if(userData){
+        userId = userData.user.id;
+    }
+    const newInfo = { productId, userId };
+    try{
+        const response = await Axios.post("http://localhost:5000/items/buy", newInfo);
+
+    }catch(error){
+        alert(error.response.data.msg);
+    }
+}
+
+export const ItemCard = ({cardId, sellPrice, info, condition, name}) => (
     <View style={styles.container}>
         <View style={styles.body}>
-            <Text style={styles.text}>ID:{cardId}</Text>
-            <Text style={styles.text}>${sellPrice}.00</Text>
+            <Text style={styles.text}>Name: {name}</Text>
+            <Text style={styles.text}>Condition: {condition}</Text>
+            <Text style={styles.text}>Price: ${sellPrice}</Text>
+
         </View>
         <View style={styles.buttonBody}>
             <CardButton 
                 btnTitle='Buy'
                 btnBgColor = '#4297A0'
                 textColor = 'white'
-                btnPress={(() => null)}
+                btnPress={(() => buyItems(cardId, info))}
                 btnWidth={cardWidth - 10}/>
         </View>
     </View>

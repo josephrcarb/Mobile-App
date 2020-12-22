@@ -11,6 +11,7 @@ import { ItemCard } from "../misc/ItemCard";
 export default function List (){
     const history = useHistory();
     const bwidth = Dimensions.get('window').width/2;
+    const { userData } = useContext(UserContext);
     const [items, setItems] = useState(null);
     const getItems = async () => {
         const items = await Axios.get("http://localhost:5000/items/");
@@ -26,13 +27,16 @@ export default function List (){
                             <div className="item" key={index}>
                                 <ItemCard
                                     cardId={item.id}
-                                    sellPrice={item.sellPrice}/>
+                                    sellPrice={item.sellPrice}
+                                    info={userData}
+                                    condition={item.condition}
+                                    name={item.name}
+                                    />
                             </div>
                     );
                 })}
             </View>
             <View>
-                
                 <AppButton
                     btnTitle='Back to Home'
                     btnBgColor='transparent'
@@ -49,7 +53,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#4297A0',
         alignItems: 'center',
-
     },
     title: {
         marginTop: Dimensions.get('window').height/4.5,
