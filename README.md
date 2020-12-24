@@ -1,4 +1,4 @@
-# eCommerce Mobile and Web Application
+# eCommerce Web Application
 
 eBay and Amazon Hybrid (eBAmazon)
 
