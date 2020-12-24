@@ -16,6 +16,14 @@ eBay and Amazon Hybrid (eBAmazon)
 
 - MERN, MongoDB, ExpressJS, ReactJS, Javascript, Expo
 
+## Functionality
+- Complete Register / Login system with password encryption. User information stored in MongoDB.
+- User and Item API functionality to, GET and POST to the MongoDB database.
+- Users can upload an image of an item with it's name, condition. Application generates a random price for input and asks if seller wants to complete transaction.
+- Users can head over to buy page and view all items that have been sold to the application. Application sells all items in database for an increased price.
+- Users can go to their profile page, to sell all the items they bought, sold, and how much total spent and earned.
+- No logged in user can sell / buy, or access profile page.
+
 ## How to run it
 
 ```
