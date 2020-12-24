@@ -23,7 +23,6 @@ export default function Sell (){
                 userId = userData.user.id;
         }
         const newPurchase = { price, userId, name, condition };
-        console.log(newPurchase)
         try {  
             const response = await Axios.post("http://localhost:5000/items/list", newPurchase);
         

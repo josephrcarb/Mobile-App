@@ -32,7 +32,7 @@ export default function Login (){
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>eBAmazon</Text>
-            <Text style={styles.subtitle}>Enter details to register</Text>
+            <Text style={styles.subtitle}>Enter Details to Login</Text>
             <Text style={styles.subtitle2}>Remember: Password must be at least 5 characters long.</Text>
             <View>
                 <TextInput

@@ -1,5 +1,5 @@
-import React, { useState, useContext, Card} from 'react';
-import { TouchableOpacity, StyleSheet, TextInput, Text, View, SafeAreaView, Dimensions } from 'react-native';
+import React, { useState, useContext, useEffect} from 'react';
+import {  StyleSheet, Text, View, SafeAreaView, Dimensions } from 'react-native';
 import { AppButton } from "../misc/Button";
 import UserContext from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function List (){
     return (
         <SafeAreaView style={styles.container}>
             <View className="items" style={styles.items}>
-            {items &&
+                {items &&
                     Object.values(items).map((item, index) => {
                         return (
                             <div className="item" key={index}>

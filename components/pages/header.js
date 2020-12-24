@@ -39,12 +39,20 @@ export default function Header(){
             </View>
             <View style={styles.logout}>
                 {userData.user ? 
-                (<AppButton
-                    btnTitle='Logout'
-                    btnBgColor='#7bed9f'
-                    textColor='#5352ed'
-                    btnPress={() => logout()}
-                    btnWidth={100}/>) : 
+                (<View style={styles.page}>
+                    <AppButton
+                        btnTitle='Logout'
+                        btnBgColor='#7bed9f'
+                        textColor='#5352ed'
+                        btnPress={() => logout()}
+                        btnWidth={100}/>
+                    <AppButton
+                        btnTitle='Profile'
+                        btnBgColor='#7bed9f'
+                        textColor='#5352ed'
+                        btnPress={() => history.push('/profile')}
+                        btnWidth={100}/>
+                </View>) : 
                 (<AppButton
                     btnTitle='Login'
                     btnBgColor='#7bed9f'

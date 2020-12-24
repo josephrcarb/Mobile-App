@@ -46,7 +46,9 @@ router.post("/register", async (req, res) => {
         const newUser = new User({
             email,
             password: passwordHash,
-            displayName
+            displayName,
+            amountBought: 0,
+            amountSold: 0,
         });
         const savedUser = await newUser.save();
         res.json(savedUser);
@@ -135,6 +137,8 @@ router.get("/", auth, async (req, res) => {
     res.json({
         displayName: user.displayName,
         id: user._id,
+        amountBought: user.amountBought,
+        amountSold: user.amountSold,
     });
 });
 

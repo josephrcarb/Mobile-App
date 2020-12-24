@@ -6,8 +6,9 @@ import Axios from 'axios';
 var cardWidth = Dimensions.get('window').width / 8;
 
 const buyItems = async ( productId, userData ) => {
+
     var userId = null;
-    if(userData){
+    if(userData.user){
         userId = userData.user.id;
     }
     const newInfo = { productId, userId };
@@ -24,7 +25,7 @@ export const ItemCard = ({cardId, sellPrice, info, condition, name}) => (
         <View style={styles.body}>
             <Text style={styles.text}>Name: {name}</Text>
             <Text style={styles.text}>Condition: {condition}</Text>
-            <Text style={styles.text}>Price: ${sellPrice}</Text>
+            <Text style={styles.text}>Price: ${sellPrice.toFixed(2)}</Text>
 
         </View>
         <View style={styles.buttonBody}>
